@@ -93,6 +93,34 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
+    @Override
+    public String toString(){
 
+        String newLine = System.lineSeparator();
+        String message = "Data not available";
+
+        if (this.name == null || this.name.equals("")) {
+            name = message;
+        }
+        if (this.employer == null || this.employer.equals("")) {
+            this.employer.setValue(message);
+        }
+        if(this.location == null || this.location.equals("")){
+            this.location.setValue(message);
+        }
+        if (this.positionType == null || this.positionType.equals("")){
+            this.positionType.setValue(message);
+        }
+        if(this.coreCompetency == null || this.coreCompetency.equals("")){
+            this.coreCompetency.setValue(message);
+        }
+
+        return newLine+ "ID: " + this.id+
+                newLine +"Name: "+this.name+
+                newLine +"Employer: "+this.employer+
+                newLine +"Location: "+this.location+
+                newLine+ "Position Type: " + this.positionType+
+                newLine+"Core Competency: " +this.coreCompetency+newLine;
+    }
 
 }
