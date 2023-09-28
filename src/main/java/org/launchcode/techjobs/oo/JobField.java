@@ -23,7 +23,7 @@ public abstract class JobField {
     // CUSTOM METHODS
     @Override
     public String toString() {
-        return value;
+        return getValue();
     }
 
     @Override
@@ -34,10 +34,9 @@ public abstract class JobField {
         return getId() == jobField.getId();
     }
 
-
     @Override
     public int hashCode() {
-        return Objects.hash(id, value);
+        return Objects.hash(getId());
     }
 
     //GETTER AND SETTER

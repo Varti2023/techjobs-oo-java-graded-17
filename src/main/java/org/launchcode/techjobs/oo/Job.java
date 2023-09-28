@@ -38,12 +38,17 @@ public class Job {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Job job = (Job) o;
-        return id == job.id && Objects.equals(name, job.name) && Objects.equals(employer, job.employer) && Objects.equals(location, job.location) && Objects.equals(positionType, job.positionType) && Objects.equals(coreCompetency, job.coreCompetency);
+        return id == job.id;
     }
+
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(id, name, employer, location, positionType, coreCompetency);
+//    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, employer, location, positionType, coreCompetency);
+        return Objects.hash(getId());
     }
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
@@ -99,28 +104,28 @@ public class Job {
         String newLine = System.lineSeparator();
         String message = "Data not available";
 
-        if (this.name == null || this.name.equals("")) {
+        if (this.name == null || this.name == "") {
             name = message;
         }
-        if (this.employer == null || this.employer.equals("")) {
-            this.employer.setValue(message);
+        if (getEmployer().getValue().strip() == "") {
+            getEmployer().setValue(message);
         }
-        if(this.location == null || this.location.equals("")){
-            this.location.setValue(message);
+        if(this.location == null || getLocation().getValue().strip() == ""){
+            getLocation().setValue(message);
         }
-        if (this.positionType == null || this.positionType.equals("")){
-            this.positionType.setValue(message);
+        if (this.positionType == null || getPositionType().getValue()==""){
+            getPositionType().setValue(message);
         }
-        if(this.coreCompetency == null || this.coreCompetency.equals("")){
-            this.coreCompetency.setValue(message);
+        if(this.coreCompetency == null || getCoreCompetency().getValue() ==""){
+            getCoreCompetency().setValue(message);
         }
 
-        return newLine+ "ID: " + this.id+
-                newLine +"Name: "+this.name+
-                newLine +"Employer: "+this.employer+
-                newLine +"Location: "+this.location+
-                newLine+ "Position Type: " + this.positionType+
-                newLine+"Core Competency: " +this.coreCompetency+newLine;
+        return newLine+ "ID: " + this.getId()+
+                newLine +"Name: "+this.getName()+
+                newLine +"Employer: "+this.getEmployer().getValue()+
+                newLine +"Location: "+this.getLocation().getValue()+
+                newLine+ "Position Type: " + this.getPositionType().getValue()+
+                newLine+"Core Competency: " +this.getCoreCompetency().getValue()+newLine;
     }
 
 }

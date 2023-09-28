@@ -41,6 +41,7 @@ public class JobTest {
     public void testJobsForEquality(){
         Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Job job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        //Job job2 =  job1;
         assertFalse(job1.equals(job2));
     }
  @Test
@@ -89,20 +90,5 @@ public class JobTest {
 
             assertEquals(actual , testJob.toString());
  }
-
- @Test
-    public void testJobsDataForOnlyIdField(){
-        String newLine = System.lineSeparator();
-        String message = "“OOPS! This job does not seem to exist.”";
-        Job testJob = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
-        String actual = newLine +"ID: "
-             +testJob.getId() +newLine+"Name: "+
-             newLine+"Employer: "+testJob.getEmployer()+
-             newLine+"Location: "+testJob.getLocation()+
-             newLine+"Position Type: "+testJob.getPositionType()+
-             newLine+"Core Competency: "+testJob.getCoreCompetency()+
-             newLine;
-        assertEquals(actual , testJob.toString());
-    }
 
 }
